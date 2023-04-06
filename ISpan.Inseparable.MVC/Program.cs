@@ -1,7 +1,13 @@
+using ISpan.Inseparable.DAL.EFCore;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//建立InseparableContext物件
+builder.Services.AddDbContext<InseparableContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("InseparableConnection")));
 
 var app = builder.Build();
 
